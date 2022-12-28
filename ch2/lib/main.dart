@@ -1,4 +1,6 @@
 import 'package:ch2/my_stateful_widget.dart';
+import 'package:ch2/page_a.dart';
+import 'package:ch2/page_b.dart';
 import 'package:ch2/page_two.dart';
 import 'package:flutter/material.dart';
 
@@ -67,6 +69,36 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+   void _page_a() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => PageA(
+          counter: _counter,
+          callback: (value) {
+            setState(() {
+              _counter = value;
+            });
+          },
+        ),
+      ),
+    );
+  }
+
+   void _page_b() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => PageB(
+          counter: _counter,
+          callback: (value) {
+            setState(() {
+              _counter = value;
+            });
+          },
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -101,6 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(onPressed: _page_a, child: Text('A')),
+            ElevatedButton(onPressed: _page_b, child: Text('B')),
+
             const Text(
               'You have pushed the button this many times:',
             ),
