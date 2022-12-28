@@ -52,17 +52,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 1;
 
-  void _navigate () async {
-    var value = await Navigator.of(context).push(
+   void _navigate() {
+    Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => PageTwo(counter: _counter),
+        builder: (context) => PageTwo(
+          counter: _counter,
+          callback: (value) {
+            setState(() {
+              _counter = value;
+            });
+          },
+        ),
       ),
     );
-    if (value != null) {
-      setState(() {
-        _counter = value;
-      });
-    }
   }
 
   @override

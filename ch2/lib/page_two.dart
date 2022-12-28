@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PageTwo extends StatefulWidget {
- // final Function(int) callback;
+ final Function(int) callback;
   int counter;
 
-  PageTwo({required this.counter, });
+  PageTwo({required this.counter, required this.callback});
 
   @override
   _PageTwoState createState() => _PageTwoState();
@@ -15,7 +15,7 @@ class _PageTwoState extends State<PageTwo> {
     setState(() {
       widget.counter++;
     });
-  //  widget.callback(widget.counter);
+    widget.callback(widget.counter);
   }
 
   @override
